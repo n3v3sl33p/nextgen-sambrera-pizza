@@ -8,9 +8,10 @@ import {
   Title,
   TopBar,
 } from "@/components/shared";
-import { ProductCart } from "@/components/shared/product-cart";
-
-export default function Home() {
+import { Api } from "@/services/api-clients";
+export default async function Home() {
+  const categories = await Api.categories.getAllCategories();
+  console.log(categories[0].products);
   return (
     <>
       <Container className="mt-10">
@@ -18,7 +19,7 @@ export default function Home() {
         {/* <Categories />
         <SortPopup /> */}
       </Container>
-      <TopBar />
+      <TopBar categories={categories} />
 
       <Container className="mt-10 pb-14">
         <div className="flex gap-[120px]">
@@ -26,245 +27,21 @@ export default function Home() {
           <div className="w-[250px]">
             <Filters />
           </div>
-
           {/* список товаров */}
 
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              <ProductsGroupList
-                title="Пиццы"
-                categoryId={0}
-                products={[
-                  {
-                    id: 1,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 2,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 3,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 4,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 5,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 6,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 7,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 8,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 9,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                ]}
-              />
-              <ProductsGroupList
-                title="Комбо"
-                categoryId={1}
-                products={[
-                  {
-                    id: 1,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 2,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 3,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 4,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 5,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 6,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 7,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 8,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 9,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                ]}
-              />
-              <ProductsGroupList
-                title="Закуски"
-                categoryId={2}
-                products={[
-                  {
-                    id: 1,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 2,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 3,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 4,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 5,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 6,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 7,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 8,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                  {
-                    id: 9,
-                    name: "peperoni",
-                    imageUrl:
-                      "https://media.dodostatic.net/image/r:292x292/11EE7D610D2925109AB2E1C92CC5383C.avif",
-                    price: 999,
-                    items: [{ price: 500 }],
-                  },
-                ]}
-              />
+              {categories.map(
+                (category) =>
+                  category.products.length > 0 && (
+                    <ProductsGroupList
+                      key={category.id}
+                      title={category.name}
+                      categoryId={category.id}
+                      products={category.products}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>
