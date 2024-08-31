@@ -1,4 +1,4 @@
-import { Api } from "@/services/api-clients";
+import { Api } from "@/shared/services/api-clients";
 import React from "react";
 
 type IngredientItem = {

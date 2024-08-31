@@ -8,16 +8,14 @@ import {
   Title,
   TopBar,
 } from "@/components/shared";
-import { Api } from "@/services/api-clients";
+import { Api } from "@/shared/services/api-clients";
 export default async function Home() {
   const categories = await Api.categories.getAllCategories();
-  console.log(categories[0].products);
+
   return (
     <>
       <Container className="mt-10">
         <Title text="Все пиццы" size="lg" className="font-extrabold" />
-        {/* <Categories />
-        <SortPopup /> */}
       </Container>
       <TopBar categories={categories} />
 

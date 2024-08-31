@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { Title } from "./title";
 import { ProductCart } from "./product-cart";
 import { useIntersection } from "react-use";
-import { useCategoryStore } from "@/store/category";
+import { useCategoryStore } from "@/shared/store/category";
 interface Props {
   title: string;
   products: any[];

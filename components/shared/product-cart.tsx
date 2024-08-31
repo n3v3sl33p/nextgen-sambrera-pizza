@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Title } from "./title";
@@ -23,7 +23,7 @@ export const ProductCart: React.FC<Props> = ({
 }) => {
   return (
     <div className={cn(className)}>
-      <Link href={"/"}>
+      <Link href={`/product/${id}`}>
         <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
           <Image width={215} height={215} src={imageUrl} alt={"aboba"} />
         </div>
