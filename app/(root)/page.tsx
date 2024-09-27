@@ -9,6 +9,7 @@ import {
   TopBar,
 } from "@/components/shared";
 import { Api } from "@/shared/services/api-clients";
+import { Suspense } from "react";
 export default async function Home() {
   const categories = await Api.categories.getAllCategories();
 
@@ -23,7 +24,9 @@ export default async function Home() {
         <div className="flex gap-[120px]">
           {/* фильтрация */}
           <div className="w-[250px]">
-            <Filters />
+            <Suspense>
+              <Filters />
+            </Suspense>
           </div>
           {/* список товаров */}
 

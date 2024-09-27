@@ -21,7 +21,8 @@ interface Props {
   name: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  onClickAddCart?: VoidFunction;
+  loading?: boolean;
+  onSubmit?: (itemId: number, ingredients: number[]) => void;
   className?: string;
 }
 
@@ -30,8 +31,9 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   name,
   ingredients,
   items,
-  onClickAddCart,
+  onSubmit,
   className,
+  loading,
 }) => {
   const [size, setSize] = React.useState<PizzaSize>(20);
   const [type, setType] = React.useState<PizzaType>(1);
@@ -52,6 +54,9 @@ export const ChoosePizzaForm: React.FC<Props> = ({
       return currentSum;
     }
   }, 0);
+  const currentItemId = items.find(
+    (item) => item.size === size && item.pizzaType === type
+  )?.id;
   const totalPrice = PizzaPrice + ingredientsPrice;
   const pizzasFilterByType = items.filter((item) => item.pizzaType === type);
   const pizzasFilterBySize = items.filter((item) => item.size === size);
@@ -100,7 +105,15 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           </div>
         </div>
 
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+        <Button
+          loading={loading}
+          onClick={() => {
+            if (currentItemId) {
+              onSubmit?.(currentItemId, Array.from(selectedIngredients));
+            }
+          }}
+          className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
+        >
           Добавить в корзину за {totalPrice} ₽
         </Button>
       </div>

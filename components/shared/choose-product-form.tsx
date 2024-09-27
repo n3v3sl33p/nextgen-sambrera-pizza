@@ -7,18 +7,20 @@ import Image from "next/image";
 interface Props {
   imageUrl: string;
   name: string;
-  onClickAdd?: VoidFunction;
+  loading?: boolean;
+  onSubmit?: VoidFunction;
   className?: string;
+  price: number;
 }
 
 export const ChooseProductForm: React.FC<Props> = ({
   imageUrl,
   name,
-  onClickAdd,
+  onSubmit,
   className,
+  price,
+  loading,
 }) => {
-  const productDetails = "30 см, традиционное тесто 30";
-  const price = 1000;
   return (
     <div className={cn(className, "flex flex-1")}>
       <div className="flex items-center justify-center flex-1 relative w-full">
@@ -33,8 +35,12 @@ export const ChooseProductForm: React.FC<Props> = ({
 
       <div className="w-[490px] bg-[#f7f6f5] p-7">
         <Title text={name} />
-        <p>{productDetails}</p>
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+
+        <Button
+          loading={loading}
+          onClick={onSubmit}
+          className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
+        >
           Добавить в корзину за {price} ₽
         </Button>
       </div>
